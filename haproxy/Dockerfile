@@ -13,4 +13,4 @@ RUN apt-get -y autoclean && \
     rm -rf /var/lib/apt/lists/*
 
 EXPOSE 443
-CMD ["/usr/sbin/sshd","-D","-f","/etc/haproxy/haproxy.cfg"]
+CMD ["/usr/sbin/haproxy","-D","-f","/etc/haproxy/haproxy.cfg"]
