@@ -1,21 +1,12 @@
-FROM debian:9-slim
+FROM fedora:latest
 
-# base packages, core clients
-RUN apt-get -y update && \
-    apt-get -y install openssh-server
-     
-RUN mkdir -p /var/run/sshd
+RUN dnf -y install openssh-server
 
-# authorized_keys for root
-# COPY .ssh/ /root/.ssh/
-RUN chown -R root.root /root/.ssh && \
-    chmod -R a-rwx,u=rwX,g=,o= /root/.ssh
+# setup openssh
+RUN sed -i "s/#PasswordAuthentication yes/PasswordAuthentication no/" /etc/ssh/sshd_config
+RUN mkdir /var/run/sshd
+RUN rm -f /var/run/nologin
 
-# cleaning
-RUN apt-get -y autoclean && \
-    apt-get -y --purge autoremove && \
-    apt-get -y clean && \
-    rm -rf /var/lib/apt/lists/*
-    
-EXPOSE 1122
-CMD ["/usr/sbin/sshd","-D","-p","1122"]
+EXPOSE 7722
+
+CMD ["/usr/sbin/sshd","-D","-p","7722"]
