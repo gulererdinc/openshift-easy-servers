@@ -2,7 +2,7 @@ FROM debian:9-slim
 
 # base packages, core clients
 RUN apt-get -y update && \
-    apt-get -y install haproxy net-tools
+    apt-get -y install haproxy net-tools procps
      
 RUN mkdir -p /var/run/haproxy
 
