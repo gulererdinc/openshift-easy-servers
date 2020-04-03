@@ -2,7 +2,7 @@ FROM debian:9-slim
 
 # base packages, core clients
 RUN apt-get -y update && \
-    apt-get -y install haproxy net-tools procps
+    apt-get -y install haproxy net-tools procps curl
      
 RUN mkdir -p /var/run/haproxy
 
@@ -13,4 +13,4 @@ RUN apt-get -y autoclean && \
     rm -rf /var/lib/apt/lists/*
 
 EXPOSE 443
-CMD ["/usr/sbin/haproxy","-D","-f","/etc/haproxy/haproxy2.cfg","-p","/var/run/haproxy/haproxy.pid"]
+CMD ["/usr/sbin/haproxy","-D","-f","/etc/haproxy/haproxy2.cfg/haproxy2.cfg","-p","/var/run/haproxy/haproxy.pid"]
