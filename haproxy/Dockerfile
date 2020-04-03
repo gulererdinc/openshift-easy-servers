@@ -4,7 +4,7 @@ FROM debian:9-slim
 RUN apt-get -y update && \
     apt-get -y install haproxy net-tools procps
      
-#RUN mkdir -p /var/run/haproxy
+RUN mkdir -p /var/run/haproxy
 
 # cleaning
 RUN apt-get -y autoclean && \
