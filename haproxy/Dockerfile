@@ -12,5 +12,5 @@ RUN apt-get -y autoclean && \
     apt-get -y clean && \
     rm -rf /var/lib/apt/lists/*
 
-#EXPOSE 443
+EXPOSE 443
 CMD ["/usr/sbin/haproxy","-D","-f","/etc/haproxy/haproxy2.cfg","-p","/var/run/haproxy/haproxy.pid"]
